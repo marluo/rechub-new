@@ -8,19 +8,21 @@ const MyApplicationsButtonContainer = ({
   id,
   setStatusTextInput,
   onStatusTextChange,
-  statusTextInput
+  statusTextInput,
+  reasonApplication
 }) => {
+  console.log("eeee", reasonApplication);
   return (
     <div className="myapplications-button-container">
       <button
         className="myapplications-button"
-        onClick={() => setStatusTextInput}
+        onClick={() => sendApplicationStatus(id, "accepted", reasonApplication)}
       >
         ACCEPT APPLICATION
       </button>
       <button
         className="myapplications-button myapplication-button-danger"
-        onClick={() => sendApplicationStatus(id, "rejected")}
+        onClick={() => sendApplicationStatus(id, "rejected", reasonApplication)}
       >
         REJECT APPLICATION
       </button>

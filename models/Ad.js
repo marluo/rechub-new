@@ -25,9 +25,7 @@ const AdSchema = new mongoose.Schema({
     default: "Until filled"
   },
   short_description: {
-    type: String,
-    default:
-      "We Tech Talents söker just nu för UMS Skeldars räkning en mjukvaruutvecklare som ska ingå i deras utvecklingsteam.Här får du möjligheten att arbeta i ett team som präglas utav en teknisk höjd, gemenskap, frihet underansvar liksom utrymme för att arbeta innovativt och nytänkande.I rollen som mjukvaruutvecklare kommer du att ha ett enhetligt perspektiv som innefattar utveckling och underhåll av UAS- system"
+    type: String
   },
   whoAreWe: {
     type: String

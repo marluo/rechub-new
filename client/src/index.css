@@ -1052,6 +1052,13 @@ button {
 
 }
 
+.input-container-respond {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
 .myads-company-info {
     display:flex;
     margin:1rem 0;

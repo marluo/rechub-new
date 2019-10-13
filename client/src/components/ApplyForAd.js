@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { postApplicationToAd } from "../actions/adActions";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import "./ApplyForAd.css";
 import JobAds from "./JobAds";
 import SingleAdCompanyInfo from "./SingleAdCompanyInfo";
@@ -12,7 +13,8 @@ const ApplyForAd = ({
   openApply,
   adId,
   postApplicationToAd,
-  auth
+  auth,
+  history
 }) => {
   const [applyFormData, setApplyFormData] = useState({
     whyText: "",
@@ -33,7 +35,14 @@ const ApplyForAd = ({
   const onApplySubmit = event => {
     console.log(event);
     event.preventDefault();
-    postApplicationToAd({ adId, whyText, yourselfText, differentText });
+    postApplicationToAd({
+      adId,
+      whyText,
+      yourselfText,
+      differentText,
+      history,
+      adId
+    });
   };
 
   return (
@@ -99,9 +108,11 @@ const ApplyForAd = ({
 
 ApplyForAd.propTypes = {};
 
-export default connect(
-  null,
-  {
-    postApplicationToAd
-  }
-)(ApplyForAd);
+export default withRouter(
+  connect(
+    null,
+    {
+      postApplicationToAd
+    }
+  )(ApplyForAd)
+);

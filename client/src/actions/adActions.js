@@ -61,14 +61,18 @@ export const getAllApplications = id => async dispatch => {
 
 //accepts or rejects an application
 
-export const sendApplicationStatus = (id, adStatus) => async dispatch => {
+export const sendApplicationStatus = (
+  id,
+  adStatus,
+  reasonApplication
+) => async dispatch => {
   const config = {
     headers: {
       "Content-Type": "application/json"
     }
   };
 
-  const body = JSON.stringify({ adStatus });
+  const body = JSON.stringify({ adStatus, reasonApplication });
 
   try {
     const response = await axios.put(
@@ -96,7 +100,7 @@ export const getMyApplications = () => async dispatch => {
 };
 
 export const postApplicationToAd = formData => async dispatch => {
-  const { whyText, differentText, yourselfText, adId } = formData;
+  const { whyText, differentText, yourselfText, adId, history } = formData;
 
   try {
     const config = {
@@ -106,6 +110,7 @@ export const postApplicationToAd = formData => async dispatch => {
     };
     const body = JSON.stringify({ whyText, differentText, yourselfText });
     const response = await axios.put(`/ads/${adId}/applicant`, body, config);
+    history.push("/myapplications/");
     dispatch({
       type: "POST_NEW_AD",
       payload: response.data

@@ -30,6 +30,8 @@ const AdList = ({ getPublicAds, posts: { ads, loading } }) => {
     });
   };
 
+  console.log(ads);
+
   const onSearchSubmit = event => {
     event.preventDefault();
   };

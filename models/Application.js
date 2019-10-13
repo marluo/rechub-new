@@ -33,7 +33,13 @@ const ApplicantSchema = new mongoose.Schema({
       type: String,
       default: "responded on yet"
     },
-    whyStatus: {
+    whyApplication: {
+      type: String
+    },
+    interviewDate: {
+      type: Date
+    },
+    interviewLocation: {
       type: String
     }
   }

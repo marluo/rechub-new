@@ -1,3 +1,5 @@
+import setHeaderToken from "../utils/setHeaderToken";
+
 const initialState = {
   user: null,
   isAuthed: false,
@@ -10,6 +12,7 @@ export default (state = initialState, action) => {
   switch (type) {
     case "LOGIN_USER": {
       localStorage.setItem("token", payload.token);
+      setHeaderToken(payload.token);
       return {
         ...state,
         user: payload,

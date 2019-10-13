@@ -10,7 +10,7 @@ const MyApplicationsCard = ({
     _id,
     user: { firstName, lastName, username },
     profile,
-    status: { adStatus },
+    status: { adStatus, whyApplication, interviewDate, interviewLocation },
     whyText,
     yourselfText,
     differentText,
@@ -21,7 +21,21 @@ const MyApplicationsCard = ({
   },
   role
 }) => {
-  console.log(_id);
+  const [reasonApplication, setReasonApplication] = useState({
+    whyApplication: "",
+    interviewDate: "",
+    interviewLocation: ""
+  });
+
+  console.log(reasonApplication);
+
+  const onChange = event => {
+    setReasonApplication({
+      ...reasonApplication,
+      [event.target.name]: event.target.value
+    });
+  };
+
   return (
     <div className="my-applications-card">
       <ProfileTop
@@ -44,14 +58,50 @@ const MyApplicationsCard = ({
         profile={profile}
       />
       {adStatus === "responded on yet" && role === "recruiter" ? (
-        <MyApplicationsButtonContainer
-          id={_id}
-          setStatusTextInput={setStatusTextInput}
-          onStatusTextChange={onStatusTextChange}
-          statusTextInput={statusTextInput}
-        />
+        <div className="input-container-respond">
+          <h3>Why did you reject/accept this applicant?</h3>
+          <textarea
+            className="ad-input"
+            name="whyApplication"
+            rows="5"
+            value={reasonApplication.whyApplication}
+            placeholder="This is the default text"
+            onChange={event => onChange(event)}
+          />
+          <h3>Location of Next Interview</h3>
+          <textarea
+            className="ad-input"
+            name="interviewLocation"
+            rows="1"
+            value={reasonApplication.interviewLocation}
+            placeholder="This is the default text"
+            onChange={event => onChange(event)}
+          />
+          <input
+            type="date"
+            className="ad-input"
+            name="interviewDate"
+            value={reasonApplication.inerviewDate}
+            placeholder="Apply Last Date"
+            onChange={event => onChange(event)}
+          />
+          <MyApplicationsButtonContainer
+            id={_id}
+            setStatusTextInput={setStatusTextInput}
+            onStatusTextChange={onStatusTextChange}
+            statusTextInput={statusTextInput}
+            reasonApplication={reasonApplication}
+          />
+        </div>
       ) : (
-        <MyApplicationsRespondedx adStatus={adStatus} id={_id} role={role} />
+        <MyApplicationsRespondedx
+          adStatus={adStatus}
+          id={_id}
+          role={role}
+          whyApplication={whyApplication}
+          interviewDate={interviewDate}
+          interviewLocation={interviewLocation}
+        />
       )}
     </div>
   );

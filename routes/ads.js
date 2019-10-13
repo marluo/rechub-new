@@ -124,10 +124,8 @@ router.put("/ads", async (req, res) => {
 
     const ads = await Ad.find({
       location: { $regex: ".*" + location + ".*" },
-      description: { $regex: ".*" + description + ".*" }
-    })
-      .sort({ date: -1 })
-      .limit();
+      short_description: { $regex: ".*" + description + ".*" }
+    }).sort({ date: -1 });
     //res json
 
     console.log(ads.length);
@@ -222,8 +220,11 @@ router.get("/ads/application/:id", decode, async (req, res) => {
 //@@ rejectar eller accetpar en application
 
 router.put("/application/:id/sendStatus/", decode, async (req, res) => {
-  const { adStatus, interviewAdress, interviewDate } = req.body;
-  console.log("www", req.params.id);
+  const {
+    adStatus,
+    reasonApplication: { whyApplication, interviewDate, interviewLocation }
+  } = req.body;
+
   try {
     if (adStatus == "accepted") {
       const application = await Application.findByIdAndUpdate(
@@ -231,7 +232,10 @@ router.put("/application/:id/sendStatus/", decode, async (req, res) => {
         {
           $set: {
             status: {
-              adStatus: adStatus
+              adStatus: adStatus,
+              whyApplication,
+              interviewDate,
+              interviewLocation
             }
           }
         },
