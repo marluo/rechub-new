@@ -1,0 +1,99 @@
+.KUK {
+  position: fixed;
+  z-index: 300;
+  background: white;
+  border: 1px solid black;
+  background-position: center;
+  top: 0;
+  right: 0;
+  width: 0%;
+  height: 100vh;
+  opacity:0;
+  visibility: hidden;
+  transition: visibility 0s 0.2s, width 0.2s 0s;
+}
+
+.mobile-backdrop {
+    /* ute ur document flow */
+    position: fixed;
+    display:none;
+    /* 0 margin så den täcker hela sidan */
+    margin:0;
+    top:0;
+    left:0;
+    z-index:180;
+    /* hur stor den ska vara */
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+
+.mobile-menu-items {
+    display:flex;
+    transition:0.3s;
+    height:100vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+.show-mobile-backdrop {
+    display:block !important;
+    right:100%;
+}
+
+.show-mobile-menu {
+    display:block !important;
+    opacity: 1 !important;
+    width:70%;
+    transform: translateY(0) !important;
+    visibility: visible;
+    transition: visibility 0s 0s, width 0.2s 0s;
+}
+.mobile-menu-ul {
+    padding:0;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-login-avatar {
+    height:100%;
+}
+
+.link-mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link-mobile-menu p {
+    margin-bottom:4rem;
+}
+
+.link-mobile-menu img {
+    height:3rem;
+    width:3rem;
+}
+
+.link-mobile-menu-name {
+    margin:1rem;
+}
+
+.mobile-menu-items li {
+    text-decoration: none;
+    list-style: none;
+    margin:1.2rem;
+    font-size:1.2rem;
+    font-weight:bold;
+    text-align: center;
+}
+
+.mobile-login-avatar {
+    margin-top:0;
+    align-items:center;
+}
+
+.showMobileModal {
+    display: none;
+}
+

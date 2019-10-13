@@ -1,0 +1,1685 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/fontawesome.min.css");
+
+
+/* LOGIN MODAL / REGISTER MODAL */
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/fontawesome.min.css");
+
+.backdrop {
+    /* ute ur document flow */
+    position: fixed;
+    display:none;
+    /* 0 margin så den täcker hela sidan */
+    margin:0;
+    top:0;
+    left:0;
+    z-index:180;
+    /* hur stor den ska vara */
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.show-backdrop {
+    display:block;
+}
+
+
+
+
+.modal-login {
+    position: fixed;
+   top: 50%;
+   left: 50%; 			
+   -webkit-transform: translate(-50%, -50%);
+   -moz-transform: translate(-50%, -50%); 
+   -ms-transform: translate(-50%, -50%); 
+   -o-transform: translate(-50%, -50%); 
+   transform: translate(-50%, -50%); 
+    display:none;
+    z-index:200;
+    width:30rem;
+    position: fixed;
+}
+
+.show-login {
+    display:block !important;
+    opacity:1 !important;
+}
+
+.login-form {
+    border-radius: 10px;
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+
+.role-wrapper {
+    position: relative;
+    height:100%;
+}
+
+
+.role-wrapper:before {
+    position: absolute;
+    top: 35%;
+    left:5.5%;
+    color:darkgrey;
+    content: '\f0c0'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Brands","Font Awesome 5 Free";
+    font-size:1.1rem;
+    font-weight: 900;  /* This is the correct font-family*/
+    font-style: normal;
+    text-decoration: inherit;
+
+}
+
+.email-wrapper {
+    position: relative;
+    height:100%;
+}
+
+
+.email-wrapper:before {
+    position: absolute;
+    top: 35.8%;
+    left:7%;
+    color:darkgrey;
+    content: '\f0e0'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Brands","Font Awesome 5 Free";
+    font-size:1.3rem;
+    font-weight: 900;  /* This is the correct font-family*/
+    font-style: normal;
+    text-decoration: inherit;
+
+}
+
+
+
+.password-wrapper {
+    position: relative;
+    height:100%;
+}
+
+
+.password-wrapper:before {
+    position: absolute;
+    top: 35%;
+    left:7%;
+    color:darkgrey;
+    content: '\f023'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Brands","Font Awesome 5 Free";
+    font-size:1.3rem;
+    font-weight: 900;  /* This is the correct font-family*/
+    font-style: normal;
+    text-decoration: inherit;
+
+}
+
+
+.username-wrapper {
+    position: relative;
+    height:100%;
+}
+
+
+.username-wrapper:before {
+    position: absolute;
+    top: 36%;
+    left:7%;
+    color:darkgrey;
+    font-size: 1.3rem;
+    content: '\f007'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Free"; /* This is the correct font-family*/
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+
+}
+
+
+.firstname-wrapper {
+    position: relative;
+    height:100%;
+}
+
+
+.firstname-wrapper:before {
+    position: absolute;
+    top: 36%;
+    left:6.5%;
+    color:darkgrey;
+    font-size: 1.3rem;
+    content: '\f2bb'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Free"; /* This is the correct font-family*/
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+
+}
+
+
+.lastname-wrapper {
+    position: relative;
+    height:100%;
+}
+
+
+.lastname-wrapper:before {
+    position: absolute;
+    top: 36%;
+    left:6.5%;
+    color:darkgrey;
+    font-size: 1.3rem;
+    content: '\f2bb'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Free"; /* This is the correct font-family*/
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+
+}
+
+.login-form input:not([type="submit"]) {
+  padding:10px 35px;
+  font-size: 1rem;
+  margin: 1rem;
+  width:20rem;
+  z-index: 30;
+  border: solid 0.2px rgba(0,0,0, 0.5);
+  font-size: 20px;
+}
+
+.login-form textarea:not([type="submit"]) {
+  padding:10px 35px;
+  font-size: 1rem;
+  margin: 1rem;
+  width:20rem;
+  z-index: 30;
+  border: solid 0.2px rgba(0,0,0, 0.5);
+  font-size: 20px;
+}
+
+select {
+    margin:0.8rem;
+    width:20rem;
+    border: solid 0.2px rgba(0,0,0, 0.5);
+    font-size: 16px;
+    color: inherit;
+    font-family: inherit;
+    padding:10px 30px;
+}
+
+
+.login-button {
+  margin-top:1rem;
+  width:70%;
+  display: inline-block;
+  height:4rem;
+  border-radius: 10px;
+  border: 0;
+  color:white;
+  background: #4e6f90;
+  font-size: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.signup {
+    display:flex;
+    width:100%;
+    padding:0 2.4rem;
+
+}
+
+.signup p {
+    display:inline-block;
+    color: rgba(0,0,0, 0.8);
+    font-size: 1.1rem;
+}
+
+@media(max-width:40rem) {
+    .modal-login {
+        width: 18rem;
+    }
+    input:not([type="submit"]) {
+        width:15rem;
+        margin:0.5rem;
+     }
+
+     select {
+         width:15rem;
+         margin:0.4rem;
+     }
+     .login-button {
+         width:15rem;
+         height:2.5rem;
+
+     }
+
+}
+
+
+
+/* NAV BAR */
+
+* {
+    box-sizing: border-box;
+}
+
+.header-container {
+    width:100%;
+}
+
+.header {
+    display:flex;
+    padding: 0 5rem;
+    height: 4.5rem;
+    position: absolute;
+    top:0;
+    z-index:10;
+    left:0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255,255,255, 0.4)
+}
+
+.header-white {
+    background-color: white;
+}
+
+.brand-container {
+    height:100%
+}
+
+
+.brand-img {
+    height:3rem;
+    display:block;
+}
+
+.header-title {
+    width:100%;
+    color:white;
+    display:flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.nav {
+    flex-direction: row;
+}
+
+.nav-items {
+    margin:0 0rem;
+    padding:0;
+    display:flex;
+    list-style: none;
+    align-items: center;
+    font-size: 1rem;
+    color:white;
+}
+
+
+.nav-items li {
+    margin: 0 2rem;
+    width:5rem;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px black;
+}
+
+.nav-items .mobile-menu {
+    display:none;
+}
+
+.link-flex {
+    display:flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.link-flex:visited {
+    color:inherit;
+}
+
+.avatar {
+    height:2rem;
+    border-radius: 5px;
+    display:block;
+    margin:0 1rem;
+}
+
+.login-button-navbar {
+  position: relative;
+  height:2rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 0;
+  width:8.5rem;
+  color:white;
+  background: #4e6f90;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+}
+
+.login-button-navbar p {
+    font-size: 0.9rem;
+    margin:0;
+}
+
+
+.login-nav {
+    position: absolute;
+    display:flex;
+    flex-direction: row;
+}
+
+a{
+    display:inline-block;
+    color:inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color:inherit;
+    text-decoration: none;
+}
+
+a:active {
+    color:inherit;
+}
+
+
+
+
+@media (max-width:40rem) {
+    .header {
+        padding: 0 0;
+        position:fixed;
+        background-color:white;
+    }
+
+    .header-title h2 {
+        color:black;
+    }
+
+
+    .nav-items li:not(.mobile-menu) {
+        display:none;
+    }
+    .nav-items .mobile-menu {
+        display:flex;
+        justify-content: flex-end;
+        height:4rem;
+        margin:0;
+
+
+    }
+    .mobile-menu img {
+        height:100%;
+        display:block;
+
+    }
+
+}
+
+
+/* BACKGROUND */
+
+
+.container {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0rem;
+    background: linear-gradient(to top, rgba(80, 68, 18, 0.4) 100%, transparent), url("./components/background.png") center/cover no-repeat border-box;
+    filter: grayscale(70%);
+    width: 100%;
+    min-width: 100%;
+    height:40vh;
+    min-height:200px;
+    z-index: 8;
+}
+
+.picture-headline {
+      text-align: center;
+}
+
+
+.container h1 {
+  color: white;
+  margin:0;
+  font-family: "Anton", sans-serif;
+  position: absolute;
+  top:50%;
+  left:0;
+  right:0;
+  font-size: 1.6rem;
+}
+
+.container h2 {
+  color: white;
+  margin:0;
+  font-family: "Anton", sans-serif;
+  position: absolute;
+  top:65%;
+  left:0;
+  right:0;
+  font-weight: 200;
+  font-size: 1.2rem;
+}
+
+
+
+/* SEARCH BAR */
+.searchbar-container {
+    display: flex;
+    align-items: center;
+    width:100%;
+    height: 40%;
+}
+
+form {
+    width:100%;
+}
+
+.input-group {
+    display:flex;
+    width:60%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+/* .city-label {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    z-index:-2;
+    
+}
+
+.city-input:focus ~ .city-label {
+  top: -10%;
+}
+
+.job-input:focus ~ .city-label {
+  top: -10%;
+} */
+
+
+.job-input, .city-input {
+  padding:20px 50px;
+  font-size: 16px;
+  margin: 2rem 2rem;
+  width:100%;
+  z-index: 30;
+  border: solid 0.2px rgba(0,0,0, 0.5);
+  font-size: 20px;
+}
+
+.job-input {
+  background: url(https://images.vexels.com/media/users/3/132068/isolated/preview/f9bb81e576c1a361c61a8c08945b2c48-search-icon-by-vexels.png) no-repeat left white;
+  background-size: 1.8rem;
+  background-position: 2%;
+}
+.city-input {
+  background: url(https://diveoahu.com/wp-content/uploads/2018/11/Location_icon.png) no-repeat left white;
+  background-size: 1.8rem;
+  background-position: 2%;
+
+}
+
+
+
+.button {
+  display: inline-block;
+  height:4rem;
+  border-radius: 10px;
+  border: 0;
+  color:white;
+  background: #4e6f90;
+  border: 2px solid #ccc;
+  font-size: 12px;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+
+@media(max-width:60rem) {
+  .input-group { 
+    width:80%;
+  }
+  .job-input, .city-input {
+    margin: 2rem 0.4rem;
+  }
+
+  .button {
+    width:30%;
+  }
+
+}
+
+
+@media(max-width: 40rem) {
+  .input-group { 
+    flex-direction: column;
+    width:90%;
+  }
+  .job-input, .city-input {
+    margin:20px;  
+  }
+
+  .button {
+    width:95%;
+  }
+
+}
+
+
+
+/* AD LIST */ 
+
+
+* {
+      font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+.jobs-container {
+    margin-top: 3rem;
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;
+    z-index:2;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.single-dd-container {
+    border-top: 1px solid rgba(117, 117, 117, 0.5);
+    width:45%;
+    position: relative;
+
+}
+
+
+.single-dd {
+    margin: 1rem 0;
+    padding:1px;
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    width:100%;
+}
+
+.link {
+    text-decoration: none;
+    color:black;
+    width:100%;
+}
+
+.link:hover {
+    color:black;
+}
+
+.link:visited {
+    color:black;
+}
+
+
+.job-title {
+    position:flex;
+    width:80%;
+    top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    flex:nowrap;
+}
+
+
+.job-desc {
+    position: flex;
+    width:80%;
+}
+
+
+.job-info {
+    height:100%;
+    margin-top:1rem;
+    padding: 0 0rem;
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+    width:100%;
+}
+
+.job-info p {
+    margin:0;
+    margin-right: 2rem;
+}
+
+.job-desc {
+    display:flex;
+    width:100%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.job-desc p{
+    width:100%;
+    margin:1.5% 0;
+    font-size: 1rem;
+    opacity: 0.5;
+}
+
+.logo {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height:100%;
+}
+
+.logo img {
+    height:2rem;
+}
+
+button {
+    display:inline-block;
+    width:5rem;
+}
+
+
+@media (max-width:40rem){
+    .single-ad-container {
+    width:95%;
+
+}
+}
+
+
+@media (max-width:60rem) {
+  .single-ad-container {
+    width:80%;
+  }
+
+}
+
+
+
+/* SINGLE AD */
+
+.JOB {
+    margin-top: 2rem;
+}
+
+.single-job {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width:100%;
+    height:100%;
+}
+
+.single-jobx {
+    border-radius: 10px;
+    margin: 0 2rem;
+    margin-bottom:4rem;
+    background-color:#F5F5F5;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:50%;
+    height: 100%;
+    box-shadow: 1px 1px 4px black;
+}
+
+.single-job-info {
+    padding: 2rem;
+    line-height: 1.7rem;
+    width:100%;
+}
+
+
+
+.single-job__container h1 {
+    text-align: center;
+    width:100%;
+}
+
+
+.single-job__company {
+    border-radius: 10px;
+    z-index: 0;
+    background-color:#F5F5F5;
+    justify-content: center;
+    width:100%;
+    box-shadow: 1px 1px 4px black;
+    height:35rem;
+    margin-bottom: 2rem;
+    margin-top:0;
+
+}
+
+.sex {
+    width:20rem;
+    display: flex;
+    justify-content: center;
+}
+.single-job__companyx {
+    border-radius: 10px;
+    z-index: 0;
+    background-color:#F5F5F5;
+    justify-content: center;
+    width:20%;
+    box-shadow: 1px 1px 4px black;
+    height:25rem;
+
+}
+
+
+.company-container {
+    width:100%;
+    height:50rem;
+}
+
+.company-brand {
+    display:flex;
+    justify-content: center;
+    padding-top: 1rem;
+    height: 6rem;
+}
+
+.company-brand img {
+    display: block;
+    height:100%;
+}
+
+.company-container__info {
+    margin-top: 2rem;
+    width:100%;
+
+}
+.company-container__subinfo {
+    display: flex;
+    padding:0.4rem 0.5rem;
+    justify-content: space-between;
+}
+
+.centersubinfo {
+    display:flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.apply-container {
+    margin-top:1.4rem;
+    position: relative;
+    display:flex;
+    justify-content: center;
+}
+
+.apply-button {
+  height:3rem;
+  border-radius: 10px;
+  border: 0;
+  width:80%;
+  color:white;
+  background: #4e6f90;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.apply-button:disabled {
+    background: grey;
+}
+
+
+.ad-apply-button {
+  height:3rem;
+  border-radius: 10px;
+  border: 0;
+  width:80%;
+  color:white;
+  background: #4e6f90;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.apply-stuff {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+
+
+@media (max-width: 60rem){
+    .single-jobx {
+        width:60%;
+    }
+    .single-job__company {
+        width:30%;
+    }
+}
+
+@media (max-width: 45rem){
+    .single-job {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .single-jobx {
+        width:90%;
+    }
+    .single-job__company {
+        width:90%;
+        margin-bottom: 1rem;
+    }
+}
+
+
+/* APPLY FOR AD  */
+
+
+.ad-input {
+  font-size: 16px;
+  z-index: 2;
+  border: solid 0.2px rgba(0,0,0, 0.5);
+  font-size: 20px;
+  resize: none;
+}
+
+.apply-inputs {
+    display: inline-block;
+    width:25rem;
+    display:flex;
+    flex-direction: column;
+}
+.ad-input-group {
+    display:flex;
+    height:700px;
+}
+
+
+.ad-apply-button-container {
+    display:flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+
+/* MY ADS */
+
+
+
+
+.myads-container {
+    display:flex;
+    width:100%;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .myads-header {
+    display:flex;
+    justify-content: flex-start;
+    font-family: inherit;
+    width:60%;
+    height: 100%
+} */
+
+
+
+.myads-list-container {
+    display:flex;
+    position:relative;
+    justify-content: center;
+}
+
+.myads-list-img {
+    height:4rem;
+}
+
+.myads-list-img img {
+    height:100%;
+    display:block;
+}
+
+.myads-list {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:45%;
+    margin:1rem 0;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    box-shadow: 1px 1px 4px black;
+}
+
+.myads-list-header {
+    margin-top:1rem;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+}
+
+.myads-list h2 {
+    margin:0.4rem;
+    font-size:1.5rem;
+}
+
+.myads-list_desc {
+    margin-top:1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.myads-list_desc h2 {
+    margin:0;
+    padding-left:0.2rem;
+
+}
+
+.myads-list_desc p {
+    font-size: 1.1rem;
+
+}
+
+.myads-list-applicants {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    width:100%;
+    height:100%;
+}
+
+.myads-list-applicants p {
+    font-size:1.5rem;
+}
+
+.applicants-accepted:before {
+    position: absolute;
+    top: 40%;
+    left:49%;
+    color:green;
+    content: '\f4fc'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Brands","Font Awesome 5 Free";
+    font-size:1.4rem;
+    font-weight: 900;  /* This is the correct font-family*/
+    font-style: normal;
+    text-decoration: inherit;
+
+}
+
+.applicants-rejected:before {
+    position: absolute;
+    top: 39%;
+    left:75.6%;
+    color:red;
+    content: '\f4fa'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Brands","Font Awesome 5 Free";
+    font-size:1.4rem;
+    font-weight: 900;  /* This is the correct font-family*/
+    font-style: normal;
+    text-decoration: inherit;
+
+}
+
+.myads-company-info {
+    display:flex;
+    margin:1rem 0;
+    margin-left: 1rem;
+    flex-direction: column;
+    align-items: center;
+    width:15%;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    box-shadow: 1px 1px 4px black;
+}
+
+.myads-company-info-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+}
+
+
+.myads-company-logo-img {
+    height: 4rem;
+    margin-top: 0.5rem;
+}
+
+.myads-company-logo-img img {
+    height:100%;
+    display:block;
+}
+
+.myads-company-info-all {
+    margin-top: 0.8rem;
+    display:flex;
+    width:100%;
+    flex-direction: column;
+}
+
+.myads-company-info_subinfo {
+     display:flex;
+     justify-content: space-between;
+     padding:0 0.4rem;
+     margin: 0.5rem 0;
+     width:100%;
+
+}
+
+
+.applicant-button-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.applicants-link-container {
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.applicants-button {
+  margin-top:1rem;
+  width:70%;
+  display: inline-block;
+  height:2rem;
+  border-radius: 10px;
+  border: 0;
+  color:white;
+  background: #4e6f90;
+  font-size: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  letter-spacing: 2px;
+}
+.danger-delete {
+    background:  #77212E;
+}
+
+
+
+/* MY APPLICATIONS */
+
+.applicant-container {
+    display:flex;
+    margin-top:2.5rem;
+    margin-bottom:2.5rem;
+    width:100%;
+    justify-content: center;
+}
+
+.my-applications-card {
+    width:70%;
+    background-color:#F5F5F5;
+    box-shadow: 1px 1px 4px black;
+    display:flex;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-applications-card__name {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.application-info-box {
+    display:flex;
+    flex-direction: column;
+}
+
+.application-info-box__text {
+    margin:2rem 2rem;
+    margin-top:0;
+}
+
+.application-info-box__text > h2 {
+    margin:0;
+}
+
+.job_edu_h2 {
+    margin: 0 2rem;
+}
+
+.application-info-box__exp {
+    display:flex;
+    flex-direction: row;
+    height:100%;
+}
+
+.applicant-exp-container {
+    width:100%;
+}
+
+.myapplications-button-container {
+    display:flex;
+    justify-content: space-around;
+    width:100%;
+    padding:2rem 2rem;
+}
+
+.myapplications-button {
+  height:3rem;
+  border-radius: 10px;
+  width:20rem;
+  border: 0;
+  color:white;
+  background: #4e6f90;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.myapplication-button-danger {
+    background:red;
+}
+
+.responded-container {
+    padding:2rem;
+}
+
+
+/* PROFILE */
+
+/* PROFILE-TOP */
+
+.profile-top-container {
+    margin-top: 2rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+
+.profile-header {
+    display:flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    width:60%;
+    box-shadow: 1px 1px 4px black;
+    height:20rem;
+    background-color:#F5F5F5;
+}
+
+.hide-boxshadow {
+    box-shadow: none;
+}
+
+.profile-user{
+    display:flex;
+    margin:auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-user h2{
+    padding:0.2rem;
+    margin:0.2rem;
+}
+
+.profile-header__avatar {
+    margin-top:1rem;
+    display:flex;
+    height:10rem;
+}
+
+.profile-header__avatar img {
+    display: block;
+    border: solid rgba(0, 0, 0, 0.5) 0.8px;
+    border-radius: 50% 50%;
+    height:100%
+}
+
+@media(max-width:40rem){
+    .profile-header {
+    width:90%;
+    }
+}
+
+/* PROFILE BIO */
+
+.profile-bio-container {
+    margin-top: 1.5rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+
+.profile-bio {
+    display:flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    width:60%;
+    margin-top:0.5rem;
+    box-shadow: 1px 1px 4px black;
+    height:100%;
+    background-color:#F5F5F5;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.Profile-bio-header {
+    position: relative;
+    width:100%;
+}
+
+.Profile-bio-header h2 {
+    text-align: center;
+    width:100%;
+}
+
+.profile-bio__text {
+    display:flex;
+    flex-wrap: wrap;
+    position: relative;
+    padding:0rem 2rem;
+    width:100%;
+    line-height: 1.7rem;
+}
+
+.profile-bio__p {
+    position: absolute;
+    padding:0rem 2rem;
+    width:100%;
+    line-height: 1.7rem;
+}
+
+@media (max-width:40rem){
+    .profile-bio {
+        width:90%;
+    }
+
+}
+
+
+
+/* PROFILE EXP */
+
+.profile-exp-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+
+.profile-exp {
+    display:flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    width:60%;
+    height:100%;
+    margin-top:0.5rem;
+    box-shadow: 1px 1px 4px black;
+    padding-bottom:2rem;
+    background-color:#F5F5F5;
+    margin-bottom: 2rem;
+}
+
+.application-class {
+    width:90%;
+}
+
+.Profile-exp-header {
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: flex-end;
+    align-items: center;
+    height:100%;
+}
+
+.profile-exp-container{
+    display:flex;
+}
+
+.profile-exp-list {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    width:100%;
+    margin-bottom: 0.4rem;
+    border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
+    border-top: 1px rgba(0, 0, 0, 0.2) solid;
+}
+
+.company-header {
+    grid-column: 2 / 4;
+
+}
+
+.title-header {
+    grid-column: 5 / 7;
+
+}
+
+.years-header {
+    grid-column: 8 / 10;
+}
+
+
+
+.field-of-study-header {
+    grid-column: 6/7;
+}
+
+.exp-list__date__fos {
+    grid-column: 6/7;
+}
+
+.exp-list__date {
+    grid-column: 8 / 10;
+
+
+}
+.exp-list__degree {
+    grid-column: 5 / 7;
+    
+}
+.exp-list__school {
+    grid-column: 2 / 4;
+    
+}
+
+
+.profile-exp-list h4 {
+    margin:0rem;
+    padding:0;
+}
+
+.exp-list {
+    width:100%;
+    margin: 0.4rem 0;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    width:100%;
+}
+
+.exp-list h5 {
+    margin:0;
+    padding:0;
+}
+
+
+
+@media(max-width:40rem){
+    .profile-exp {
+        width:90%;
+    }
+
+    .profile-exp-list {
+    display:grid;
+    grid-template-rows: auto;
+    }
+    .company-header {
+    grid-column: 2 / 4;
+
+}
+
+
+.title-header {
+    grid-column: 4 / 7;
+}
+
+.years-header {
+    grid-column: 8 / 10;
+}
+
+.exp-list__date {
+    grid-column: 8 / 10;
+
+
+}
+.exp-list__degree {
+    grid-column: 5 / 7;
+    
+}
+
+.exp-list__degree {
+    grid-column: 4 / 5;
+    
+}
+.exp-list__school {
+    grid-column: 2 / 4;
+    
+}
+
+}
+
+
+
+
+
+/* NEED TO CLEAR SOM SHIT HERE  */
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+      margin: 0;
+      background-color: white;
+}
+
+
+.backdrop {
+    /* ute ur document flow */
+    position: fixed;
+    display:none;
+    /* 0 margin så den täcker hela sidan */
+    margin:0;
+    top:0;
+    left:0;
+    z-index:180;
+    /* hur stor den ska vara */
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.show-backdrop {
+    display:block;
+}
+
+
+.worker-application__container {
+    margin-top: 2rem;
+    width:100%;
+    display:flex;
+    justify-content: center;
+}
+
+.sixty-container {
+    border-radius: 10px;
+    margin: 0 2rem;
+    margin-bottom:4rem;
+    background-color:#F5F5F5;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:60%;
+    height: 100%;
+    box-shadow: 1px 1px 4px black;
+}
+
+.post-container {
+    width:100%;
+    display:flex;
+    justify-content: center;
+}
+
+.post-card {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width:100%;
+    height:100%;
+}
+
+.single-postad {
+    border-radius: 10px;
+    margin: 2rem 2rem;
+    margin-bottom:4rem;
+    background-color:#F5F5F5;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:50%;
+    height: 100%;
+    box-shadow: 1px 1px 4px black;
+}
+
+.ad-form-group {
+    display:flex;
+    margin:2rem 2rem;
+    align-items: center;
+    flex-direction: column;
+    width:60%;
+}
+
+.ad-form-group__label {
+    width:55%;
+    display:flex;
+    justify-content: flex-start;
+}
+
+.ad-form-group-label__textarea {
+    width:100%;
+    padding-left:1rem;
+}
+
+
+
+.ad-form-group h4 {
+    margin:0;
+    padding:0;
+}
+
+
+.ad-form-group input {
+  padding:10px 35px;
+  font-size: 1rem;
+  margin: 1rem;
+  width:20rem;
+  z-index: 30;
+  border: solid 0.2px rgba(0,0,0, 0.5);
+  font-size: 20px;
+}
+
+.ad-form-group input {
+    margin:0 2rem;
+}
+.ad-form-group label {
+    margin:1rem 2rem;
+}
+
+.ad-form-group textarea {
+    margin:0 2rem;
+}
+
+.profile-bio__form {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.margin-buttonfix {
+    margin-top:2.4rem;
+}
+
+.margin-button-edit {
+    margin:1rem;
+}
+
+
+.general-button {
+  height:3rem;
+  border-radius: 10px;
+  border: 0;
+  width:2rem;
+  color:white;
+  background: #4e6f90;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 200;
+}
+
+.width-edit {
+    width:5rem;
+}
+
+.profile-bio-header-edit {
+    display:flex;
+    width:100%;
+    justify-content: flex-end;
+}
+
+.flex-right-button {
+    position: relative;
+    display:flex;
+    width:100%;
+    justify-content: center;
+}
+
+.flex-center {
+}
+
+.tt {
+    justify-content: flex-end;
+    align-items: flex-end;
+    width:4rem;
+    background-color: blue;
+}
+
+.center-mid-exp {
+    grid-column: -6 / -5;
+}
+
+
+
+

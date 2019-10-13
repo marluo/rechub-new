@@ -1,0 +1,196 @@
+
+
+
+.myads-container {
+    display:flex;
+    width:100%;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .myads-header {
+    display:flex;
+    justify-content: flex-start;
+    font-family: inherit;
+    width:60%;
+    height: 100%
+} */
+
+
+
+.myads-list-container {
+    display:flex;
+    position:relative;
+    justify-content: center;
+}
+
+.myads-list-img {
+    height:4rem;
+}
+
+.myads-list-img img {
+    height:100%;
+    display:block;
+}
+
+.myads-list {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:45%;
+    margin:1rem 0;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    box-shadow: 1px 1px 4px black;
+}
+
+.myads-list-header {
+    margin-top:1rem;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+}
+
+.myads-list h2 {
+    margin:0.4rem;
+    font-size:1.5rem;
+}
+
+.myads-list_desc {
+    margin-top:1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.myads-list_desc h2 {
+    margin:0;
+    padding-left:0.2rem;
+
+}
+
+.myads-list_desc p {
+    font-size: 1.1rem;
+
+}
+
+.myads-list-applicants {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    width:100%;
+    height:100%;
+}
+
+.myads-list-applicants p {
+    font-size:1.5rem;
+}
+
+.applicants-accepted:before {
+    position: absolute;
+    top: 40%;
+    left:49%;
+    color:green;
+    content: '\f4fc'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Brands","Font Awesome 5 Free";
+    font-size:1.4rem;
+    font-weight: 900;  /* This is the correct font-family*/
+    font-style: normal;
+    text-decoration: inherit;
+
+}
+
+.applicants-rejected:before {
+    position: absolute;
+    top: 39%;
+    left:75.6%;
+    color:red;
+    content: '\f4fa'; /* You should use \ and not /*/
+    font-family: "Font Awesome 5 Brands","Font Awesome 5 Free";
+    font-size:1.4rem;
+    font-weight: 900;  /* This is the correct font-family*/
+    font-style: normal;
+    text-decoration: inherit;
+
+}
+
+.myads-company-info {
+    display:flex;
+    margin:1rem 0;
+    margin-left: 1rem;
+    flex-direction: column;
+    align-items: center;
+    width:15%;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    box-shadow: 1px 1px 4px black;
+}
+
+.myads-company-info-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+}
+
+
+.myads-company-logo-img {
+    height: 4rem;
+    margin-top: 0.5rem;
+}
+
+.myads-company-logo-img img {
+    height:100%;
+    display:block;
+}
+
+.myads-company-info-all {
+    margin-top: 0.8rem;
+    display:flex;
+    width:100%;
+    flex-direction: column;
+}
+
+.myads-company-info_subinfo {
+     display:flex;
+     justify-content: space-between;
+     padding:0 0.4rem;
+     margin: 0.5rem 0;
+     width:100%;
+
+}
+
+
+.applicant-button-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.applicants-link-container {
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.applicants-button {
+  margin-top:1rem;
+  width:70%;
+  display: inline-block;
+  height:2rem;
+  border-radius: 10px;
+  border: 0;
+  color:white;
+  background: #4e6f90;
+  font-size: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  letter-spacing: 2px;
+}
+.danger-delete {
+    background:  #77212E;
+}
