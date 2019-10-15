@@ -141,6 +141,8 @@ export const postNewAd = (postFormData, history) => async dispatch => {
   } catch (err) {}
 };
 
+export const newProfilePic = data => async dispatch => {};
+
 export const clearAds = () => {
   return {
     type: "CLEAR_AD"

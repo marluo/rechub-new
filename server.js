@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require("multer");
 const userRouter = require("./routes/users");
 const adsRouter = require("./routes/ads");
 const profileRouter = require("./routes/profile");

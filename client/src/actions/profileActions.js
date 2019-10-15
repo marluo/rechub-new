@@ -73,3 +73,14 @@ export const submitExp = ({ company, title, from, to }) => async dispatch => {
     console.error("weweweweweew");
   }
 };
+
+export const fetchProfilePic = id => async dispatch => {
+  try {
+    const response = await axios.get(`/api/profile/${id}/avatar`);
+    console.log(response);
+    dispatch({
+      type: "PROFILE_PIC",
+      payload: response.data
+    });
+  } catch (error) {}
+};

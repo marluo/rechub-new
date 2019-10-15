@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const decode = (req, res, next) => {
   //hämtar token från headern
   const token = req.header("Authorization").replace("Bearer ", "");
+  console.log(token);
   if (!token) {
     return res.status(401).json({ error: "You don't have access here" });
   }

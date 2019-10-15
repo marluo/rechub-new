@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const multer = require("multer");
 const mongoose = require("mongoose");
 const router = express.Router();
 const decode = require("../middleware/decode");
@@ -16,7 +17,7 @@ const Profile = require("../models/Profile");
 // @@ private - role: recruiter
 // TEST: WORKING
 
-router.get("/api/profile/:id", decode, async (req, res) => {
+router.get("/api/profile/:id/", decode, async (req, res) => {
   try {
     if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       res.status(400).json({ msg: "no user by that id" });
@@ -29,7 +30,7 @@ router.get("/api/profile/:id", decode, async (req, res) => {
 
     //om profilen inte finns
     if (!profile) {
-      res.status(404).json({ msg: "no user by that id" });
+      return res.status(404).json({ msg: "no user by that id" });
     }
 
     //skicka profilen tillbaka till klienten.
@@ -200,5 +201,38 @@ router.put("/api/profile/bioo", decode, async (req, res) => {
     console.log(err.message);
   }
 });
+
+const upload = multer({
+  limits: {
+    filesize: 100000000000
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpg|jpeg)$/)) {
+      return cb(new Error("Please upload a jpg/jpeg file!"));
+    }
+    cb(undefined, true);
+  }
+});
+
+router.post(
+  "/upload",
+  decode,
+  upload.single("avatar"),
+  async (req, res) => {
+    //hitta användaren
+    const profile = await Profile.findOne({ user: req.user });
+    console.log(profile);
+
+    //req.file.buffer innehåller filen
+    profile.profilePic = req.file.buffer;
+    profile.save();
+
+    res.send(profile);
+  },
+  //om vi får error
+  (error, req, res, next) => {
+    res.status(400).send({ error: error.message });
+  }
+);
 
 module.exports = router;

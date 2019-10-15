@@ -48,7 +48,7 @@ const Navbare = ({
               <img src="https://cdn2.iconfinder.com/data/icons/mobile-banking-ver-3a/100/1-48-512.png" />
             </li>
             <li>
-              {!isAuthed && loading ? (
+              {!isAuthed ? (
                 <button
                   onClick={() => showModal()}
                   className="login-button-navbar"

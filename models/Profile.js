@@ -14,6 +14,9 @@ const ProfileSchema = new mongoose.Schema({
   profileBio: {
     type: String
   },
+  profilePic: {
+    type: Buffer
+  },
   jobs: [
     {
       title: {

@@ -9,17 +9,19 @@ import {
   getProfileById,
   submitBio,
   submitEdu,
-  submitExp
+  submitExp,
+  fetchProfilePic
 } from "../../actions/profileActions";
 
 const Profile = ({
   match: { params },
   getProfileById,
-  profile: { profile, user, error, loading },
+  profile: { profile, user, error, loading, profilePic },
   submitBio,
   submitEdu,
   submitExp,
-  auth
+  auth,
+  fetchProfilePic
 }) => {
   const [editProfile, setEditProfile] = useState({
     edit: false
@@ -82,7 +84,9 @@ const Profile = ({
 
   useEffect(() => {
     getProfileById(params.id);
+    fetchProfilePic(params.id);
   }, [params.id]);
+
   const renderProfile = () => {
     if (loading) {
       return (
@@ -111,6 +115,7 @@ const Profile = ({
             username={profile.user.username}
             profileTitle={profile.profileTitle}
             role={profile.user.role}
+            profilePic={profile.profilePic}
           />
           <ProfileBio
             handleBioSubmit={handleBioSubmit}
@@ -170,6 +175,7 @@ export default connect(
     getProfileById,
     submitBio,
     submitEdu,
-    submitExp
+    submitExp,
+    fetchProfilePic
   }
 )(Profile);
