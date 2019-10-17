@@ -9,14 +9,13 @@ import {
   getProfileById,
   submitBio,
   submitEdu,
-  submitExp,
-  fetchProfilePic
+  submitExp
 } from "../../actions/profileActions";
 
 const Profile = ({
   match: { params },
   getProfileById,
-  profile: { profile, user, error, loading, profilePic },
+  profile: { profile, loading },
   submitBio,
   submitEdu,
   submitExp,
@@ -84,7 +83,6 @@ const Profile = ({
 
   useEffect(() => {
     getProfileById(params.id);
-    fetchProfilePic(params.id);
   }, [params.id]);
 
   const renderProfile = () => {
@@ -96,7 +94,7 @@ const Profile = ({
         </Fragment>
       );
     }
-    if (!loading && profile === null) {
+    if (!loading && !profile) {
       return (
         <Fragment>
           <JobAds />
@@ -104,7 +102,7 @@ const Profile = ({
         </Fragment>
       );
     }
-    if (!loading || !profile === null) {
+    if (!loading && profile) {
       return (
         <Fragment>
           <JobAds
@@ -112,7 +110,7 @@ const Profile = ({
             subtitle={`${profile.profileTitle}`}
           />
           <ProfileTop
-            username={profile.user.username}
+            usernamex={profile.user.username}
             profileTitle={profile.profileTitle}
             role={profile.user.role}
             profilePic={profile.profilePic}
@@ -175,7 +173,6 @@ export default connect(
     getProfileById,
     submitBio,
     submitEdu,
-    submitExp,
-    fetchProfilePic
+    submitExp
   }
 )(Profile);

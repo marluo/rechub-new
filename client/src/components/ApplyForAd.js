@@ -40,8 +40,7 @@ const ApplyForAd = ({
       whyText,
       yourselfText,
       differentText,
-      history,
-      adId
+      history
     });
   };
 

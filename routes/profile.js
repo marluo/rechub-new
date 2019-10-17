@@ -30,11 +30,13 @@ router.get("/api/profile/:id/", decode, async (req, res) => {
 
     //om profilen inte finns
     if (!profile) {
+      console.log(profile);
       return res.status(404).json({ msg: "no user by that id" });
     }
 
+    console.log("ee", profile);
     //skicka profilen tillbaka till klienten.
-    res.json(profile);
+    res.status(200).json(profile);
   } catch (err) {
     console.log(err.message);
     res
@@ -227,7 +229,7 @@ router.post(
     profile.profilePic = req.file.buffer;
     profile.save();
 
-    res.send(profile);
+    res.send(profile.profilePic);
   },
   //om vi får error
   (error, req, res, next) => {

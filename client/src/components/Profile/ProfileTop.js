@@ -2,16 +2,18 @@ import PropTypes from "prop-types";
 import "./ProfileTop.css";
 import React, { useState } from "react";
 import { useDispatch, connect } from "react-redux";
+import { uploadProfilePic } from "../../actions/profileActions";
 import axios from "axios";
 
 const ProfileTop = ({
   profileTitle,
-  username,
+  usernamex,
   firstName,
   lastName,
   noBoxShadow,
   role,
-  profilePic
+  profilePic,
+  uploadProfilePic
 }) => {
   const [fileupload, setFileUpload] = useState({
     profilepic: ""
@@ -23,23 +25,12 @@ const ProfileTop = ({
     });
   };
 
-  console.log(fileupload.profilepic);
-
   const handleFileUpload = async event => {
     event.preventDefault();
-    const config = {
-      headers: { "Content-Type": "multipart/form-data" }
-    };
-
-    try {
-      const data = new FormData();
-      data.append("avatar", fileupload.profilepic);
-      const response = await axios.post("/upload", data, config);
-      console.log("wwww", response);
-    } catch (error) {
-      console.log(error.message);
-    }
+    uploadProfilePic(fileupload);
   };
+
+  console.log(usernamex);
 
   return (
     <div className="profile-top-container">
@@ -51,10 +42,14 @@ const ProfileTop = ({
       <button onClick={event => handleFileUpload(event)}></button>
       <div className={`profile-header ${noBoxShadow}`}>
         <div className="profile-header__avatar">
-          <img src />
+          <img
+            src={`data:image/jpeg;base64, ${btoa(
+              String.fromCharCode(...new Uint8Array(profilePic.data))
+            )}`}
+          />
         </div>
         <div className="profile-user">
-          <h2>{username ? username : `${firstName} ${lastName}`}</h2>
+          <h2>{usernamex ? usernamex : `${firstName} ${lastName}`}</h2>
           <p>{role}</p>
         </div>
       </div>
@@ -64,4 +59,7 @@ const ProfileTop = ({
 
 ProfileTop.propTypes = {};
 
-export default connect()(ProfileTop);
+export default connect(
+  null,
+  { uploadProfilePic }
+)(ProfileTop);

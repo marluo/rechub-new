@@ -3,6 +3,7 @@ import axios from "axios";
 export const getProfileById = profileId => async dispatch => {
   try {
     const response = await axios.get(`/api/profile/${profileId}`);
+
     dispatch({
       type: "GET_PROFILE",
       payload: response.data
@@ -78,9 +79,25 @@ export const fetchProfilePic = id => async dispatch => {
   try {
     const response = await axios.get(`/api/profile/${id}/avatar`);
     console.log(response);
+
     dispatch({
       type: "PROFILE_PIC",
-      payload: response.data
+      payload: response.data.profilepic
     });
   } catch (error) {}
+};
+
+export const uploadProfilePic = fileupload => async dispatch => {
+  const config = {
+    headers: { "Content-Type": "multipart/form-data" }
+  };
+
+  try {
+    const data = new FormData();
+    data.append("avatar", fileupload.profilepic);
+    const response = await axios.post("/upload", data, config);
+    console.log("wwww", response);
+  } catch (error) {
+    console.log(error.message);
+  }
 };

@@ -30,10 +30,40 @@ import PrivateRouteWorker from "./components/routing/PrivateRouteWorker";
 
 const initialState = {};
 const middleware = [reduxThunk];
+
+const composeEnhancers = composeWithDevTools({
+  actionSanitizer: action => {
+    return action.type == "GET_PROFILE" && action.data
+      ? {
+          ...action,
+          profile: {
+            ...action.profile,
+            profile: { profilePic: "<<LONG_BLOB>>" }
+          }
+        }
+      : action;
+  },
+  stateSanitizer: state => {
+    console.log("eeeeee", state);
+    return state
+      ? {
+          ...state,
+          profile: {
+            ...state.profile,
+            profile: {
+              ...state.profile.profile,
+              profilePic: "<<LONG_BLOB>>"
+            }
+          }
+        }
+      : state;
+  }
+});
+
 const store = createStore(
   rootReducer,
   initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
+  composeEnhancers(applyMiddleware(...middleware))
 );
 
 if (localStorage.token) {
@@ -47,7 +77,6 @@ const App = props => {
     }
   }, [authUser()]);
 
-  console.log(props);
   return (
     <Provider store={store}>
       <BrowserRouter>
