@@ -46,6 +46,7 @@ const SingleAd = ({
                   adButton={apply.ad}
                   buttonText={buttonText}
                   auth={auth}
+                  companyLogo={loading || !ad ? "" : ad.companyLogo}
                 />
               </div>
             </div>

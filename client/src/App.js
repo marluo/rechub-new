@@ -33,18 +33,22 @@ const middleware = [reduxThunk];
 
 const composeEnhancers = composeWithDevTools({
   actionSanitizer: action => {
-    return action.type == "GET_PROFILE" && action.data
+    console.log("easdadsadsadsee", action);
+    return (action.type === "GET_PROFILE" || "PROFILE_PIC") && action
       ? {
           ...action,
           profile: {
             ...action.profile,
-            profile: { profilePic: "<<LONG_BLOB>>" }
+            profile: {
+              profilePic: {
+                data: "<<LONG_BLOB>>"
+              }
+            }
           }
         }
       : action;
   },
   stateSanitizer: state => {
-    console.log("eeeeee", state);
     return state
       ? {
           ...state,

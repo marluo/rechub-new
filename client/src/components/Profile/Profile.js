@@ -50,6 +50,16 @@ const Profile = ({
     to: ""
   });
 
+  const [companyLogo, setCompanyLogo] = useState({
+    companyLogo: ""
+  });
+
+  const companyLogoOnChange = event => {
+    setCompanyLogo({
+      companyLogo: event.target.files[0]
+    });
+  };
+
   console.log(editExp);
   console.log(editEdu);
 
@@ -102,7 +112,7 @@ const Profile = ({
         </Fragment>
       );
     }
-    if (!loading && profile) {
+    if (!loading && profile && profile.user) {
       return (
         <Fragment>
           <JobAds
@@ -110,7 +120,7 @@ const Profile = ({
             subtitle={`${profile.profileTitle}`}
           />
           <ProfileTop
-            usernamex={profile.user.username}
+            username={profile.user.username}
             profileTitle={profile.profileTitle}
             role={profile.user.role}
             profilePic={profile.profilePic}

@@ -1,7 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-const PostAdInputGroup = ({ onPostAdChange, postNewAd, onPostSubmit }) => {
+const PostAdInputGroup = ({
+  onPostCompanyChange,
+  onPostAdChange,
+  postNewAd,
+  onPostSubmit,
+  companyLogo
+}) => {
+  console.log("eeee", companyLogo);
   return (
     <form className="ad-form-group" onSubmit={event => onPostSubmit(event)}>
       <label className="ad-form-group__label">
@@ -160,6 +167,22 @@ const PostAdInputGroup = ({ onPostAdChange, postNewAd, onPostSubmit }) => {
         placeholder="What Qualifications are we looking for?"
         onChange={event => onPostAdChange(event)}
       />
+      <label>
+        <h4>Upload a Company Logo</h4>
+      </label>
+      <input
+        className="ad-input "
+        type="file"
+        name="companyLogo"
+        onChange={event => onPostCompanyChange(event)}
+      ></input>
+      <label></label>
+      {companyLogo.companyLogo ? (
+        <Fragment>
+          <h4>Preview of Logo</h4>
+          <img src={URL.createObjectURL(companyLogo.companyLogo)}></img>
+        </Fragment>
+      ) : null}
       <div className="ad-apply-button-container">
         <button class="ad-apply-button" type="submit">
           Post Ad

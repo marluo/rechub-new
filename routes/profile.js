@@ -28,15 +28,15 @@ router.get("/api/profile/:id/", decode, async (req, res) => {
       "user"
     );
 
+    console.log(profile);
+
     //om profilen inte finns
     if (!profile) {
       console.log(profile);
       return res.status(404).json({ msg: "no user by that id" });
     }
-
-    console.log("ee", profile);
     //skicka profilen tillbaka till klienten.
-    res.status(200).json(profile);
+    res.status(200).send(profile);
   } catch (err) {
     console.log(err.message);
     res
@@ -221,15 +221,17 @@ router.post(
   decode,
   upload.single("avatar"),
   async (req, res) => {
+    console.log("testing", req.user);
     //hitta användaren
-    const profile = await Profile.findOne({ user: req.user });
-    console.log(profile);
+    const profile = await Profile.findOneAndUpdate(
+      { user: req.user },
+      {
+        $set: { profilePic: req.file.buffer }
+      },
+      { new: true }
+    );
 
-    //req.file.buffer innehåller filen
-    profile.profilePic = req.file.buffer;
-    profile.save();
-
-    res.send(profile.profilePic);
+    return res.status(200).json(profile.profilePic);
   },
   //om vi får error
   (error, req, res, next) => {

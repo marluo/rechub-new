@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import "./ProfileTop.css";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, connect } from "react-redux";
 import { uploadProfilePic } from "../../actions/profileActions";
 import axios from "axios";
 
 const ProfileTop = ({
   profileTitle,
-  usernamex,
+  username,
   firstName,
   lastName,
   noBoxShadow,
@@ -15,6 +15,9 @@ const ProfileTop = ({
   profilePic,
   uploadProfilePic
 }) => {
+  console.log("www", username);
+  const inputFile = useRef(null);
+
   const [fileupload, setFileUpload] = useState({
     profilepic: ""
   });
@@ -25,31 +28,49 @@ const ProfileTop = ({
     });
   };
 
-  const handleFileUpload = async event => {
-    event.preventDefault();
-    uploadProfilePic(fileupload);
+  useEffect(() => {
+    if (!fileupload.profilepic) {
+      console.log("lalalalala");
+    } else {
+      console.log("wwwwwww");
+      uploadProfilePic(fileupload);
+    }
+  }, [fileupload.profilepic]);
+
+  var base64 = pic => {
+    if (!pic) {
+      return null;
+    }
+    return btoa(
+      new Uint8Array(pic.data).reduce(function(data, byte) {
+        return data + String.fromCharCode(byte);
+      }, "")
+    );
   };
 
-  console.log(usernamex);
+  const onButtonClick = () => {
+    inputFile.current.click();
+  };
 
   return (
     <div className="profile-top-container">
-      <input
-        type="file"
-        name="avatar"
-        onChange={event => fileinputlol(event)}
-      ></input>
-      <button onClick={event => handleFileUpload(event)}></button>
       <div className={`profile-header ${noBoxShadow}`}>
         <div className="profile-header__avatar">
+          <input
+            type="file"
+            name="avatar"
+            ref={inputFile}
+            onChange={event => fileinputlol(event)}
+          ></input>
+          <h2 onClick={onButtonClick}>⚙</h2>
           <img
-            src={`data:image/jpeg;base64, ${btoa(
-              String.fromCharCode(...new Uint8Array(profilePic.data))
-            )}`}
-          />
+            src={`data:image/jpg;base64,${base64(profilePic)}
+               
+              `}
+          ></img>
         </div>
         <div className="profile-user">
-          <h2>{usernamex ? usernamex : `${firstName} ${lastName}`}</h2>
+          <h2>{username ? username : `${firstName} ${lastName}`}</h2>
           <p>{role}</p>
         </div>
       </div>

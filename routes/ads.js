@@ -8,6 +8,7 @@ const recruiter = require("../middleware/recruiter");
 const validateRegister = require("../validation/register");
 const User = require("../models/User");
 const Ad = require("../models/Ad");
+const multer = require("multer");
 const Profile = require("../models/Profile");
 const Application = require("../models/Application");
 
@@ -15,7 +16,22 @@ const Application = require("../models/Application");
 //@@ - postar en ny ad av en rekryterare
 //@@ - privat - role:recruiter
 
-router.post("/api/ads", decode, async (req, res) => {
+const upload = multer({
+  limits: {
+    filesize: 100000000000
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpg|jpeg)$/)) {
+      return cb(new Error("Please upload a jpg/jpeg file!"));
+    }
+    cb(undefined, true);
+  }
+});
+
+router.post("/api/ads", upload.single("company"), decode, async (req, res) => {
+  const formdata = JSON.parse(req.body.data);
+  console.log(formdata);
+
   const {
     title,
     position,
@@ -32,7 +48,7 @@ router.post("/api/ads", decode, async (req, res) => {
     startDate,
     shortDescription,
     lastApplyDate
-  } = req.body;
+  } = formdata;
   try {
     const newAd = new Ad({
       user: req.user,
@@ -50,7 +66,8 @@ router.post("/api/ads", decode, async (req, res) => {
       short_description: shortDescription,
       "contact.email": contactEmailAdress,
       "contact.phone": contactPhoneNumber,
-      "contact.name": contactName
+      "contact.name": contactName,
+      companyLogo: req.file.buffer
     });
     await newAd.save();
 

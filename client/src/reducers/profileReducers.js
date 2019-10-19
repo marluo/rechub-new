@@ -14,6 +14,15 @@ export default (state = initialState, action) => {
         loading: false
       };
     }
+    case "PROFILE_PIC": {
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          profilePic: payload
+        }
+      };
+    }
     case "PROFILE_ERROR": {
       return { ...state, error: payload, loading: false };
     }

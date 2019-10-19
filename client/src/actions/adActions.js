@@ -120,18 +120,19 @@ export const postApplicationToAd = formData => async dispatch => {
   }
 };
 
-export const postNewAd = (postFormData, history) => async dispatch => {
+export const postNewAd = (
+  postFormData,
+  history,
+  companyLogo
+) => async dispatch => {
   try {
-    console.log(postFormData);
     const body = JSON.stringify(postFormData);
-    const config = {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
-    console.log(body);
-    const response = await axios.post("/api/ads", body, config);
-    console.log("???", response);
+    const data = new FormData();
+    data.append("company", companyLogo);
+    data.append("data", body);
+    console.log(data);
+
+    const response = await axios.post("/api/ads", data);
     history.push(`/ad/${response.data._id}`);
 
     dispatch({
@@ -140,8 +141,6 @@ export const postNewAd = (postFormData, history) => async dispatch => {
     });
   } catch (err) {}
 };
-
-export const newProfilePic = data => async dispatch => {};
 
 export const clearAds = () => {
   return {

@@ -16,6 +16,9 @@ const AdSchema = new mongoose.Schema({
   company: {
     type: String
   },
+  companyLogo: {
+    type: Buffer
+  },
   location: {
     type: String,
     required: true

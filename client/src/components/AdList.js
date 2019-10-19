@@ -30,10 +30,19 @@ const AdList = ({ getPublicAds, posts: { ads, loading } }) => {
     });
   };
 
-  console.log(ads);
-
   const onSearchSubmit = event => {
     event.preventDefault();
+  };
+
+  var base64 = logo => {
+    if (!logo) {
+      return null;
+    }
+    return btoa(
+      new Uint8Array(logo.data).reduce(function(data, byte) {
+        return data + String.fromCharCode(byte);
+      }, "")
+    );
   };
 
   return (
@@ -58,7 +67,11 @@ const AdList = ({ getPublicAds, posts: { ads, loading } }) => {
                       <p>{ad.position}</p>
                       <div className="logo">
                         <a>
-                          <img src={twitter} />
+                          <img
+                            src={`data:image/jpg;base64,${base64(
+                              ad.companyLogo
+                            )}`}
+                          />
                         </a>
                       </div>
                     </div>

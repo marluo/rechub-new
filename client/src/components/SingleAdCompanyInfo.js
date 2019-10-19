@@ -10,12 +10,23 @@ const SingleAdCompanyInfo = ({
   setApplyView,
   adButton,
   ad,
+  companyLogo,
   auth: { isAuthed, loading }
 }) => {
+  var base64 = btoa(
+    new Uint8Array(companyLogo.data).reduce(function(data, byte) {
+      return data + String.fromCharCode(byte);
+    }, "")
+  );
+
   return (
     <Fragment>
       <div className="company-brand">
-        <img src="https://re-allians.se/wp-content/uploads/2019/03/SKV_RGB_st-444x321.png" />
+        <img
+          src={`data:image/jpg;base64,${base64}
+               
+              `}
+        />
       </div>
       <div className="company-container__info">
         <div className="company-container__subinfo">

@@ -24,7 +24,18 @@ const PostAd = ({ postNewAd, history }) => {
     applyLastDate: ""
   });
 
-  console.log("wwwwww", postFormData);
+  const [companyLogo, setCompanyLogo] = useState({
+    companyLogo: null
+  });
+
+  const onPostCompanyChange = event => {
+    setCompanyLogo({
+      companyLogo: event.target.files[0]
+    });
+  };
+
+  console.log(companyLogo.companyLogo);
+
   //toggle register/login
   const onPostAdChange = event =>
     // vi kan dynamiskt beroende på vilken input ändra staten här. ...formdata ser till att staten behålls och inte skrivs över.
@@ -35,7 +46,8 @@ const PostAd = ({ postNewAd, history }) => {
 
   const onPostSubmit = event => {
     event.preventDefault();
-    postNewAd(postFormData, history);
+    console.log("wwww");
+    postNewAd(postFormData, history, companyLogo.companyLogo);
   };
 
   return (
@@ -47,6 +59,8 @@ const PostAd = ({ postNewAd, history }) => {
           onPostAdChange={onPostAdChange}
           postNewAd={postNewAd}
           onPostSubmit={onPostSubmit}
+          onPostCompanyChange={onPostCompanyChange}
+          companyLogo={companyLogo}
         />
       </div>
     </Fragment>

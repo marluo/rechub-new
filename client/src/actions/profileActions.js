@@ -75,7 +75,7 @@ export const submitExp = ({ company, title, from, to }) => async dispatch => {
   }
 };
 
-export const fetchProfilePic = id => async dispatch => {
+/* export const fetchProfilePic = id => async dispatch => {
   try {
     const response = await axios.get(`/api/profile/${id}/avatar`);
     console.log(response);
@@ -86,7 +86,7 @@ export const fetchProfilePic = id => async dispatch => {
     });
   } catch (error) {}
 };
-
+ */
 export const uploadProfilePic = fileupload => async dispatch => {
   const config = {
     headers: { "Content-Type": "multipart/form-data" }
@@ -96,7 +96,11 @@ export const uploadProfilePic = fileupload => async dispatch => {
     const data = new FormData();
     data.append("avatar", fileupload.profilepic);
     const response = await axios.post("/upload", data, config);
-    console.log("wwww", response);
+    console.log(response.data);
+    dispatch({
+      type: "PROFILE_PIC",
+      payload: response.data
+    });
   } catch (error) {
     console.log(error.message);
   }
